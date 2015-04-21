@@ -1,0 +1,166 @@
+body {
+	background-image: url("img/ScrapBackground.jpg");
+	background-attachment: fixed;
+	height: 100vh;
+	margin: 0;
+}
+#main {
+	background-color: #aebed5;
+	width: 600px;
+	height: auto;
+	border: 1px solid;
+	border-color: black;
+	box-shadow: 5px 5px 5px #888888;
+	margin: 0 auto;
+	position: relative;
+	top: 50%;
+	margin-top: -206.5px;
+	padding-top: 70px;
+	padding-bottom: 70px;
+}
+/*on the homepage*/
+#PicMeLogin {
+	font-family: 'Pacifico', cursive;
+	color: white;
+	font-size: 60px;
+	text-align: center;
+	margin: 0;
+}
+
+#LoginDescription, #RegisterDescription {
+	color: white;
+	text-align: center;
+	margin: 0;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+#registerError, #loginError{
+	color: #EE3B3B;
+	text-align: center;
+	margin: 0;
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+#or {
+	font-size: 20px;
+	color: white;
+	text-align: center;
+	margin: 0;
+}
+.button {
+	font: bold 11px Arial;
+	text-decoration: none;
+	background-color: #e5ecf4;
+	color: #3e4f6f;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-top: 1px solid #CCCCCC;
+	border-right: 1px solid #333333;
+	border-bottom: 1px solid #333333;
+	border-left: 1px solid #CCCCCC;
+	border-radius: 10px;
+	text-align: center;
+	margin-left: 252px;
+	margin-right: 252px;
+	display: block;
+	clear: both;
+}
+
+.button:hover {
+	background-color: #acbad4;
+	color: white;
+}
+.inputSection {
+	width: 280px;
+	margin: 0 auto;
+	display:block;
+}
+.inputSection input {
+	width: 140px;
+	float: right;
+	margin-top: 5px;
+}
+.inputSection label {
+	clear: both;
+	float: left;
+	margin-top: 5px;
+}
+form{
+	overflow: hidden;
+}
+#topBar {
+	width: 100%;
+	height: auto;
+	background-color: #aebed5;
+}
+#PicMeTitle {
+	font-family: 'Pacifico', cursive;
+	color: white;
+	font-size: 35px;
+	margin: 0;
+	padding-left: 10px;
+	display: inline;
+}
+#findFriends {
+	display: inline;
+	width: 400px;
+	font-size: 25px;
+	margin-left: 20px;
+}
+#feedTitle {
+	color: #3e4f6f;
+	font-size:22px;
+	margin-top: 10px;
+	display: block;
+}
+#content {
+	width: 700px;
+	height: 100%;
+	margin: 0 auto;
+	
+	margin-top: 20px;
+}
+#mainFeed, #posts{
+	width: 600px;
+	height: auto;
+	margin: 0 auto;
+	clear: both;
+}
+#Feed {
+	width: 600px;
+	height: auto;
+	margin: 0 auto;
+	clear: both;
+}
+#postButton {
+	float: right;
+	margin-right: 0px;
+	margin-left: 0px;
+	margin-bottom: 10px;
+}
+.emptyFeed {
+	text-align: center;
+	clear: both;
+}
+#postInput {
+	width: 100%;
+	height: 5em;
+}
+.post {
+	margin-top: 20px;
+	width: 100%;
+	height: auto;
+	padding: 5px 5px 5px 5px;
+	background-color: white;
+	border-color: #CCCCCC;
+	border: 1px solid;
+	border-color: black;
+	box-shadow: 5px 5px 5px #888888;
+}
+
+hr {
+	clear: both;
+	border-color: black;
+}

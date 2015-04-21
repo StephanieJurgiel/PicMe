@@ -1,0 +1,20 @@
+extends ./base.jade
+block append style
+	link(rel='stylesheet', type='text/css', href='/assets/style.css')
+	link(href='http://fonts.googleapis.com/css?family=Pacifico', rel='stylesheet', type='text/css')
+	body
+	#main
+		h1#PicMeLogin PicMe 
+		h2#LoginDescription Please enter your login credentials 
+		form#loginForm.mainForm(name='loginForm', action='/login', method='POST')
+			.inputSection
+				label#userLabel(for='username')  Username: 
+				input#user(type='text', name='username', placeholder='username')
+			.inputSection
+				label(for='pass')  Password: 
+				input#pass(type='password', name='pass', placeholder='password')
+		h2#loginError(name='loginError')
+		input#loginButton(type='button', value='Log in', class='button')
+	// end main
+block scripts
+	script(src="/assets/client.js")

@@ -1,0 +1,29 @@
+extends ./base.jade
+block append style
+	link(rel='stylesheet', type='text/css', href='/assets/style.css')
+	link(href='http://fonts.googleapis.com/css?family=Pacifico', rel='stylesheet', type='text/css')
+	body
+	#main
+		h1#PicMeLogin PicMe 
+		h2#RegisterDescription Please enter some information about yourself! 
+		form#registerForm.mainForm(name='registerForm', action='/register', method='POST')
+			.inputSection
+				label#userLabel(for='username')  Username: 
+				input#userRegister(type='text', name='username')
+			.inputSection
+				label#firstNameLabel(for='firstname') First Name:
+				input#firstNameRegister(type='text', name='firstname')
+			.inputSection
+				label#lastNameLabel(for='lastname') Last Name:
+				input#lastNameRegister(type='text', name='lastname')
+			.inputSection
+				label(for='pass')  Password: 
+				input#passRegister(type='password', name='pass')
+			.inputSection
+				label(for='repeatpass')  Repeat Password: 
+				input#repeatPassRegister(type='password', name='repeatpass')
+		h2#registerError
+		input#registerButton(type='button', value='Register', class='button')
+	// end main
+block scripts
+	script(src="/assets/client.js")

@@ -1,0 +1,29 @@
+extends ./base.jade
+block append style
+	link(rel='stylesheet', type='text/css', href='/assets/style.css')
+	link(href='http://fonts.googleapis.com/css?family=Pacifico', rel='stylesheet', type='text/css')
+	body
+	#topBar
+		h1#PicMeTitle  PicMe 
+		input#findFriends(type='text', name='findFriends', placeholder='Find Friends')
+	// End of top bar
+	#mainFeed
+		p#feedTitle  Did you see something cool today? 
+		form#postForm.mainForm(name='postForm', action='/app', method='POST')
+			.postInputSection
+				textArea#postInput(name='postInput')
+		input#postButton(type='button', value='Post', class='button')
+		hr
+	section#posts
+		if !picmes || picmes.length == 0
+			div.posts
+				h3.emptyFeed There are no pictures shared with you yet
+		else
+			each val in picmes
+				div.post
+					h3.usernameSays #{val.username} ( #{val.firstname} #{val.lastname} ) says:
+					p.text #{val.text}
+					
+	// end main
+block scripts
+	script(src="/assets/post.js")

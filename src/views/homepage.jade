@@ -1,0 +1,15 @@
+extends ./base.jade
+block append style
+	link(rel='stylesheet', type='text/css', href='/assets/style.css')
+	link(href='http://fonts.googleapis.com/css?family=Pacifico', rel='stylesheet', type='text/css')
+	body
+		#main
+			h1#PicMeLogin  PicMe 
+			h2#LoginDescription  Start sharing today! 
+			#buttons
+			a#login(href="/login", class="button") Log In
+			p#or  or 
+			a#register(href="/register", class="button") Register
+		//end main
+block scripts
+	script(src="/assets/client.js")
