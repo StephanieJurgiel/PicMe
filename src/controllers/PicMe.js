@@ -63,7 +63,7 @@ var deletePost = function(req, res) {
     });
 	
 	//PicMe.PicMeModel.remove( { deleteID: req.body.deleteID });
-	PicMe.PicMeModel.collection.remove( { "username" : "snj6366" })
+	PicMe.PicMeModel.collection.remove( { "deleteID" : req.body.deleteID })
 	res.json({redirect: '/app'});
 };
 
