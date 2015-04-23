@@ -11,6 +11,7 @@ var router = function(app) {
 	app.post("/register", mid.requiresSecure, mid.requiresLogout, controllers.Account.register);//mid.requiresLogout breaks
 	app.post("/login", mid.requiresSecure, controllers.Account.login);
 	app.post("/app", mid.requiresLogin, controllers.PicMe.createPost);
+	app.post("/delete", mid.requiresLogin, controllers.PicMe.deletePost);
 };
 
 module.exports = router; 

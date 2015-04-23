@@ -21,8 +21,11 @@ block append style
 		else
 			each val in picmes
 				div.post
+					
+					a.x(id='#{val.deleteID}', action='/delete') X #{val.deleteID}
 					h3.usernameSays #{val.username} ( #{val.firstname} #{val.lastname} ) says:
 					p.text #{val.text}
+					
 					
 	// end main
 block scripts

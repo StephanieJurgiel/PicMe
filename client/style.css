@@ -152,15 +152,27 @@ form{
 	margin-top: 20px;
 	width: 100%;
 	height: auto;
-	padding: 5px 5px 5px 5px;
 	background-color: white;
 	border-color: #CCCCCC;
 	border: 1px solid;
 	border-color: black;
 	box-shadow: 5px 5px 5px #888888;
 }
-
+.post h3, .post p{
+	margin-left: 20px;
+	margin-right: 20px;
+}
 hr {
 	clear: both;
 	border-color: black;
+}
+.x {
+	float: right;
+	padding: 2px 2px 2px 2px;
+	color: red;
+}
+.x:hover {
+	background-color: #EEEEEE;
+	border: 1px solid;
+	cursor: pointer;
 }

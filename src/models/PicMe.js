@@ -39,7 +39,11 @@ var PicMeSchema = new mongoose.Schema({
     createdData: {
         type: Date,
         default: Date.now
-    }
+    },
+	deleteID: {
+		type: String,
+		required: true
+	}
 });
 
 PicMeSchema.methods.toAPI = function() {
@@ -54,10 +58,15 @@ PicMeSchema.statics.findByOwner = function(ownerId, callback) {
         poster: mongoose.Types.ObjectId(ownerId)
     };
 
-	return PicMeModel.find(search).select("text username firstname lastname").exec(callback);
+	return PicMeModel.find(search).select("text username firstname lastname deleteID").exec(callback);
 };
 
-
+PicMeSchema.statics.findByDeleteID = function(deleteID, callback) {
+    var search = {
+        deleteID: deleteID
+    };
+	return PicMeModel.find(search).select("username deleteID text").exec(callback);
+};
 PicMeModel = mongoose.model('PicMe', PicMeSchema);//this gets called
 
 

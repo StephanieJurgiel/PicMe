@@ -3,7 +3,6 @@ var requiresLogin = function(req, res, next) {
     if(!req.session.account) {
         return res.redirect('/');
     }
-    console.log('in requires');
     next();
 };
 
@@ -12,7 +11,6 @@ var requiresLogout = function(req, res, next) {
     if(req.session.account) {
         //return res.redirect('/app');
     }
- console.log('in requires');
     next();
 };
 
