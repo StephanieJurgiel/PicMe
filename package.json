@@ -14,7 +14,7 @@
     "Redis",
     "Login"
   ],
-  "author": "Cody Van De Mark",
+  "author": "Stephanie Jurgiel",
   "license": "Apache 2.0",
   "dependencies": {
     "body-parser": "^1.9.1",
@@ -26,7 +26,8 @@
     "jade": "^1.7.0",
     "mongoose": "^4.0.1",
     "serve-favicon": "^2.1.6",
-    "underscore": "^1.7.0"
+    "underscore": "^1.7.0",
+    "uuid": "^2.0.1"
   },
   "devDependencies": {
     "jshint": "^2.5.6"

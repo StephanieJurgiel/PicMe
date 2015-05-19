@@ -4,15 +4,23 @@ block append style
 	link(href='http://fonts.googleapis.com/css?family=Pacifico', rel='stylesheet', type='text/css')
 	body
 	#topBar
-		h1#PicMeTitle  PicMe 
-		input#findFriends(type='text', name='findFriends', placeholder='Find Friends')
+		a#PicMeTitle PicMe 
+		#search
+			input#findFriends(type='text', name='findFriends', placeholder='Find Friends', action='/search')
+			#searchResults
+		h3 
 	// End of top bar
 	#mainFeed
 		p#feedTitle  Did you see something cool today? 
-		form#postForm.mainForm(name='postForm', action='/app', method='POST')
+		form#postForm.mainForm(name='postForm', action='/app', method='POST' enctype='multipart/form-data')
 			.postInputSection
-				textArea#postInput(name='postInput')
-		input#postButton(type='button', value='Post', class='button')
+				textArea#postInput(name='postInput' placeholder='Describe your picture!')
+				textArea#imageLinkInput(name='imageLinkInput' rows='1' placeholder='Paste a link to your picture here!' wrap='off')
+			//.postImageInput
+				//input#imageInput(type='file' name='file[]' multiple='multiple')
+		.buttons
+			input#postButton(type='button', value='Post', class='button')
+		h2#postError
 		hr
 	section#posts
 		if !picmes || picmes.length == 0
@@ -21,12 +29,19 @@ block append style
 		else
 			each val in picmes
 				div.post
-					
-					a.x(id='#{val.deleteID}', action='/delete') X #{val.deleteID}
-					h3.usernameSays #{val.username} ( #{val.firstname} #{val.lastname} ) says:
+					a.x(id='#{val.deleteID}', action='/delete') X
+					.postHeader
+						img.postProfilePic(alt='profile' src='#{val.profilePicture}')
+						h3.usernameSays #{val.username} says:
 					p.text #{val.text}
+					img(src='#{val.picture}' class='postPicture')
+					p.numLikes Likes: #{val.likeUsers.length}
+					a.likeButton
+						img.likePicture(src='assets/img/thumbsUp.png')
 					
 					
 	// end main
 block scripts
 	script(src="/assets/post.js")
+	script(src="/assets/search.js")
+	script(src="/assets/switchPages.js")

@@ -10,7 +10,7 @@ var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
 var url = require('url');
  
-var dbURL = process.env.MONGOLAB_URI || "mongodb://localhost/DomoMaker";
+var dbURL = process.env.MONGOLAB_URI || "mongodb://localhost/PicMe";
 
 var db = mongoose.connect(dbURL, function(err) {
     if(err) {
@@ -34,7 +34,8 @@ if(process.env.REDISCLOUD_URL) {
 //pull in our routes -- the router controls switching from page to page
 var router = require('./router.js'); 
 
-var server;  
+var server;
+//set the port
 var port = process.env.PORT || process.env.NODE_PORT || 3000; 
 
 var app = express(); 
@@ -49,13 +50,14 @@ app.use(session({
         port: redisURL.port,
         pass: redisPASS
     }),
-    secret: 'Domo Arigato',
+    secret: 'PicMe Pictures',
     resave: true,
     saveUninitialized: true
 }));    
 app.set('view engine', 'jade'); 
 app.set('views', __dirname + '/views'); 
 app.use(favicon(__dirname + '/../client/img/favicon.png')); 
+app.use('../client/img/',express.static(__dirname + '/../client/img/')); 
 app.use(cookieParser()); 
 
 router(app); 

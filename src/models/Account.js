@@ -6,6 +6,10 @@ var iterations = 10000;
 var saltLength = 64;
 var keyLength = 64;
 
+/*
+*	Schema for a user account
+*	username, salt, password, firstname, lastname, profilePicture, createdData
+*/
 var AccountSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -35,6 +39,11 @@ var AccountSchema = new mongoose.Schema({
 		required: true
 	},
 	
+	profilePicture: {
+		type: String, 
+		required: true
+	},
+	
     createdData: {
         type: Date,
         default: Date.now
@@ -42,16 +51,23 @@ var AccountSchema = new mongoose.Schema({
 
 });
 
+/*
+*	gets information from the account
+*/
 AccountSchema.methods.toAPI = function() {
     //_id is built into your mongo document and is guaranteed to be unique
     return {
         username: this.username,
 		firstname: this.firstname,
 		lastname: this.lastname,
+		profilePicture: this.profilePicture,
         _id: this._id 
     };
 };
 
+/*
+*	validates password on login
+*/
 AccountSchema.methods.validatePassword = function(password, callback) {
 	var pass = this.password;
 	
@@ -63,6 +79,7 @@ AccountSchema.methods.validatePassword = function(password, callback) {
 	});
 };
 
+//find an account by a username (uses findOne()) -- used on the login page
 AccountSchema.statics.findByUsername = function(name, callback) {
 
     var search = {
@@ -72,6 +89,19 @@ AccountSchema.statics.findByUsername = function(name, callback) {
     return AccountModel.findOne(search, callback);
 };
 
+//another find an account by a username (uses find()) -- runs faster on my pages -- I use this on the app and profile pages
+AccountSchema.statics.findByUsernameContains = function(name, callback) {
+
+    var search = {
+        username: name
+    };
+
+    return AccountModel.find(search, callback);
+};
+
+/*
+*	Used when creating an account
+*/
 AccountSchema.statics.generateHash = function(password, callback) {
 	var salt = crypto.randomBytes(saltLength);
 	
@@ -80,6 +110,9 @@ AccountSchema.statics.generateHash = function(password, callback) {
 	});
 };
 
+/*
+*	Used when checking if an account exists when logging in
+*/
 AccountSchema.statics.authenticate = function(username, password, callback) {
 	return AccountModel.findByUsername(username, function(err, doc) {
 		if(err)
@@ -102,6 +135,14 @@ AccountSchema.statics.authenticate = function(username, password, callback) {
         
 	});
 };
+
+/*
+AccountSchema.statics.findUsersBySearch = function(searchName, callback) {
+	var userSearch = {
+        search: searchName
+    };
+	AccountModel.find(userSearch).select("username").exec(callback);
+};*/
 
 AccountModel = mongoose.model('Account', AccountSchema);
 

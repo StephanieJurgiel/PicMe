@@ -34,12 +34,29 @@ body {
 	font-size: 20px;
 	margin-bottom: 10px;
 }
-#registerError, #loginError{
+#registerError, #loginError, #postError{
 	color: #EE3B3B;
 	text-align: center;
 	margin: 0;
 	font-size: 18px;
 	margin-bottom: 10px;
+	display: block;
+	clear: both;
+}
+#pictureRegisterP{
+	width: 100%;
+	display: block;
+	clear: both;
+	text-align: center;
+	padding-top: 10px;
+	margin-top: 5px;
+	padding-bottom: 0px;
+	margin-bottom: 2px;
+}
+#pictureRegister {
+	width: 280px;
+	margin: 0 auto;
+	margin-left: 160px;
 }
 #or {
 	font-size: 20px;
@@ -68,9 +85,25 @@ body {
 	clear: both;
 }
 
+.resultButton {
+	font: bold 11px Arial;
+	text-decoration: none;
+	background-color: #FFFFFF;
+	color: #3e4f6f;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: block;
+	float: left;
+	width: 100%;
+}
+
 .button:hover {
 	background-color: #acbad4;
 	color: white;
+}
+.resultButton:hover {
+	cursor: pointer;
+	background-color: #EEEEEE;
 }
 .inputSection {
 	width: 280px;
@@ -92,23 +125,42 @@ form{
 }
 #topBar {
 	width: 100%;
-	height: auto;
+	height: 80px;
 	background-color: #aebed5;
+	position: fixed;
+	top: 0%;
+	z-index: 2;
 }
 #PicMeTitle {
 	font-family: 'Pacifico', cursive;
 	color: white;
-	font-size: 35px;
+	font-size: 40px;
 	margin: 0;
 	padding-left: 10px;
 	display: inline;
 }
-#findFriends {
-	display: inline;
+#PicMeTitle:hover {
+	cursor: pointer;
+}
+#search, #findFriends{
+	display: inline-block;
 	width: 400px;
 	font-size: 25px;
 	margin-left: 20px;
+	position: relative;
 }
+
+#searchResults {
+	display: block;
+	background-color: rgba(255, 255, 255, 1.0);
+	position: absolute;
+	margin-top: 10px;
+	margin-left: 20px;
+	width: 400px;
+	border: 1px solid;
+	border-color: black;
+}
+
 #feedTitle {
 	color: #3e4f6f;
 	font-size:22px;
@@ -119,7 +171,6 @@ form{
 	width: 700px;
 	height: 100%;
 	margin: 0 auto;
-	
 	margin-top: 20px;
 }
 #mainFeed, #posts{
@@ -127,6 +178,9 @@ form{
 	height: auto;
 	margin: 0 auto;
 	clear: both;
+	position: relative;
+	top: 80px;
+	z-index: 1;
 }
 #Feed {
 	width: 600px;
@@ -134,12 +188,19 @@ form{
 	margin: 0 auto;
 	clear: both;
 }
-#postButton {
-	float: right;
+#postButton , #uploadButton{
+	float: left;
 	margin-right: 0px;
 	margin-left: 0px;
 	margin-bottom: 10px;
+	display: inline;
+	clear: none;
+	margin-left: 10px;
 }
+.buttons {
+	float: right;
+}
+
 .emptyFeed {
 	text-align: center;
 	clear: both;
@@ -147,6 +208,22 @@ form{
 #postInput {
 	width: 100%;
 	height: 5em;
+	font-size: 14px;
+}
+#imageInput {
+	width: 100%;
+	resize: none;
+	line-height: 20px;
+	margin-top: 10px;
+}
+
+#imageLinkInput {
+	width: 100%;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	resize: none;
+	font-size:14px;
+	overFlow: hidden;
 }
 .post {
 	margin-top: 20px;
@@ -157,10 +234,52 @@ form{
 	border: 1px solid;
 	border-color: black;
 	box-shadow: 5px 5px 5px #888888;
+	overflow: auto;
 }
+
+.postProfilePic {
+	width: 50px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	display: inline;
+}
+.usernameSays {
+	position: absolute;
+	margin-top: 10px;
+	display: inline;
+	padding: 0px;
+}
+#topProfilePic {
+	width: 50px;
+	margin-right:10px;
+	float: right;
+	margin-top: 10px;
+	margin-left: 10px;
+	
+}
+
+.resultImage {
+	width: 40px;
+	margin: 10px 10px 10px 10px;
+	display: inline;
+}
+.resultName {
+	display: inline;
+}
+.ResultUsername {
+	display: inline;
+	margin-left: 10px;
+	clear: left;
+}
+
 .post h3, .post p{
 	margin-left: 20px;
 	margin-right: 20px;
+}
+.post h3 {
+	display: inline;
 }
 hr {
 	clear: both;
@@ -175,4 +294,62 @@ hr {
 	background-color: #EEEEEE;
 	border: 1px solid;
 	cursor: pointer;
+}
+.postPicture {
+	margin: 10px 10px 0px 10px;
+	width: calc(100% - 20px);
+}
+
+.likePicture, .dislikePicture {
+	width: 20px;
+	margin: 10px 10px 10px 10px;
+	float: right;
+}
+.likePicture:hover, .dislikePicture:hover {
+	cursor: pointer;
+}
+.numLikes {
+	display: inline;
+	color: green;
+	float: left;
+}
+
+.numDislikes {
+	display: inline;
+	color: red; 
+	float: left;
+}
+
+.profilePic {
+	width: 150px;
+	height: 150px;
+	margin: 0 auto;
+	display: block;
+	margin-bottom: 5px;
+	border: 1px solid;
+	border-color: black;
+	
+}
+#profileLinkInput{
+	width: 150px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	resize: none;
+	font-size:14px;
+	overFlow: hidden;
+	margin: 0 auto;
+	display: block;
+}
+.userPageTitle {
+	text-align: center;
+	margin: 0px 0px 5px 0px;
+}
+.profilePic {
+	margin-top: 10px;
+}
+.profileButton {
+	margin: 0 auto;
+	width: auto;
+	margin-left: -25px;
+	margin-top: 5px;
 }

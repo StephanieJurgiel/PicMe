@@ -1,0 +1,44 @@
+extends ./base.jade
+block append style
+	link(rel='stylesheet', type='text/css', href='/assets/style.css')
+	link(href='http://fonts.googleapis.com/css?family=Pacifico', rel='stylesheet', type='text/css')
+	body
+	#topBar
+		each val in userDoc
+			a#PicMeTitle PicMe 
+			#search
+				input#findFriends(type='text', name='findFriends', placeholder='Find Friends', action='/search')
+				#searchResults
+	// End of top bar
+	#mainFeed
+		each val in userDoc
+			.profileHeader
+				img.profilePic(alt='profile' src='#{val.profilePicture}')
+				h2.userPageTitle #{val.username}
+				textArea#profileLinkInput(name='profileLinkInput' rows='1' placeholder='Profile Picture Link' wrap='off')
+				.profileButton
+					input.profilePicButton(id='#{val.username}', type='button', value='Change Picture', class='button')
+		hr
+	section#posts
+		if !picmes || picmes.length == 0
+			div.posts
+				h3.emptyFeed You have not posted any pictures yet
+		else
+			each val in picmes
+				div.post
+					a.x(id='#{val.deleteID}', action='/delete') X
+					.postHeader
+						img.postProfilePic(alt='profile' src='#{val.profilePicture}')
+						h3.usernameSays #{val.username} says:
+					p.text #{val.text}
+					img(src='#{val.picture}' class='postPicture')
+					p.numLikes Likes: #{val.likeUsers.length}
+					a.likeButton
+						img.likePicture(src='../assets/img/thumbsUp.png')
+					
+	// end main
+block scripts
+	script(src="/assets/post.js")
+	script(src="/assets/search.js")
+	script(src="/assets/switchPages.js")
+	script(src="/assets/profile.js")
